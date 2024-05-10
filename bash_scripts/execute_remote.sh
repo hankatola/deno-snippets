@@ -1,4 +1,5 @@
 #!/bin/bash
+# returns only the script output
 
 # Check if at least one argument (the URL) is provided
 if [ "$#" -lt 1 ]; then
@@ -16,7 +17,6 @@ shift
 TMP_SCRIPT=$(mktemp)
 
 # Download the script
-echo "Downloading script from $URL..."
 curl -fsSL "$URL" -o "$TMP_SCRIPT"
 
 # Check if the download was successful
@@ -33,10 +33,7 @@ chmod +x "$TMP_SCRIPT"
 SCRIPT_OUTPUT=$("$TMP_SCRIPT" "$@" 2>&1)
 
 # Print the captured output
-echo "Output from the executed script:"
 echo "$SCRIPT_OUTPUT"
-
-# Optionally, you can do additional processing with $SCRIPT_OUTPUT here
 
 # Clean up by removing the temporary script
 rm -f "$TMP_SCRIPT"

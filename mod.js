@@ -1,5 +1,5 @@
 // Import required modules from Deno standard library
-import { run } from "https://deno.land/std@0.157.0/process/mod.ts";
+import { run } from "https://deno.land/std@0.157.0/process/mod.ts"
 
 const bashScriptURL = targetFile => {
   const repoLocation = `https://raw.githubusercontent.com/hankatola/deno-snippets/main/bash_scripts/`
@@ -7,36 +7,40 @@ const bashScriptURL = targetFile => {
   return `${repoLocation}${targetFile}`
 }
 
-export const runScript = async (script, argvCommands) => {
+export const runScript = async (script, args) => {
   if (typeof script !== 'string') {
     throw new TypeError(`script variable must be type string`)
   }
-  const ensureArray = arg => Array.isArray(arg)? arg: [arg]
-  const shellCommands = argvCommands === undefined? [script] : [script, ensureArray(argvCommands)]
 
   try {
+    const ensureArray = arg => Array.isArray(arg)? arg: [arg]
+
     // Running the shell script
+    console.log(`executing script ${script}`)
     const process = run({
-      cmd: shellCommands(script, argvCommands), // Command to run the shell script
+      cmd: args === undefined? [script] : [script, ensureArray(args)], // Command to run the shell script
       stdout: "piped",  // Capture the standard output
       stderr: "piped"   // Capture the standard error
-    });
+    })
 
     // Wait for the process to complete and collect its output
-    const { code } = await process.status();
+    const { code } = await process.status()
 
     // Checking the exit code of the script to handle errors
     if (code === 0) {
-      const output = new TextDecoder().decode(await process.output());
-      console.log("Output:", output);
+      console.log(`\tscript succeeded`)
+      const output = new TextDecoder().decode(await process.output())
+      process.close()
+      return output
     } else {
-      const error = new TextDecoder().decode(await process.stderrOutput());
-      console.error("Error:", error);
+      console.log(`\tscript failed`)
+      const error = new TextDecoder().decode(await process.stderrOutput())
+      process.close()
+      throw new Error(`Script failed with error: ${error}`)
     }
-
-    // Always close the process after completion to free up system resources
-    process.close();
   } catch (error) {
-    console.error("Failed to run script:", error);
+    console.error(`unable to execute script`)
+    throw new Error(`Unable to run script, error: ${error}`)
   }
 }
+

@@ -129,5 +129,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# additional shell files
+# additional files
 /commit.sh
