@@ -29,9 +29,14 @@ fi
 # Make the script executable
 chmod +x "$TMP_SCRIPT"
 
-# Execute the script with any additional arguments
-echo "Running the script with arguments $@"
-"$TMP_SCRIPT" "$@"
+# Execute the script with any additional arguments and capture its output
+SCRIPT_OUTPUT=$("$TMP_SCRIPT" "$@" 2>&1)
+
+# Print the captured output
+echo "Output from the executed script:"
+echo "$SCRIPT_OUTPUT"
+
+# Optionally, you can do additional processing with $SCRIPT_OUTPUT here
 
 # Clean up by removing the temporary script
 rm -f "$TMP_SCRIPT"

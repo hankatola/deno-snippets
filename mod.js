@@ -1,6 +1,12 @@
 // Import required modules from Deno standard library
 import { run } from "https://deno.land/std@0.157.0/process/mod.ts";
 
+const bashScriptURL = targetFile => {
+  const repoLocation = `https://raw.githubusercontent.com/hankatola/deno-snippets/main/bash_scripts/`
+  targetFile = targetFile.substring(targetFile.length-3) === `.sh` ? targetFile : `${targetFile}.sh`
+  return `${repoLocation}${targetFile}`
+}
+
 export const runScript = async (script, argvCommands) => {
   if (typeof script !== 'string') {
     throw new TypeError(`script variable must be type string`)
