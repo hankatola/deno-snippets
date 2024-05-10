@@ -128,3 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# additional shell files
+commit.sh
