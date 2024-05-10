@@ -34,6 +34,3 @@ export const runScript = async (script, argvCommands) => {
     console.error("Failed to run script:", error);
   }
 }
-
-// Call the function to execute the script
-runShellScript();

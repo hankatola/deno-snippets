@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Minimum number of arguments needed is 1 (the URL)
+# Check if at least one argument (the URL) is provided
 if [ "$#" -lt 1 ]; then
     echo "Usage: $0 <URL> [arg1 arg2 ... argN]"
     exit 1
@@ -9,8 +9,8 @@ fi
 # The first argument is the URL
 URL=$1
 
-# Remaining arguments (if any) will be passed to the downloaded script
-shift  # This command shifts the positional parameters to the left, so $2 becomes $1, $3 becomes $2, etc.
+# Shift the first argument to get the remaining arguments, if any
+shift
 
 # Define a temporary file to store the downloaded script
 TMP_SCRIPT=$(mktemp)
@@ -29,7 +29,7 @@ fi
 # Make the script executable
 chmod +x "$TMP_SCRIPT"
 
-# Execute the script with all additional arguments
+# Execute the script with any additional arguments
 echo "Running the script with arguments $@"
 "$TMP_SCRIPT" "$@"
 
