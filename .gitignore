@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # additional shell files
-commit.sh
+/commit.sh
