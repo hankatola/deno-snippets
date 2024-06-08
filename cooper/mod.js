@@ -33,6 +33,7 @@ const cooper = async (metaUrl) => {
   const files = []
   console.log(`\nHi from cooper\n`)
   let callingLocation = dirname(fromFileUrl(metaUrl))
+  console.log(callingLocation)
   callingLocation.replace(`https://raw.githubusercontent.com`, ``)
   console.log(callingLocation)
 
