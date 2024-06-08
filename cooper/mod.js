@@ -34,12 +34,9 @@ const cooper = async (metaUrl) => {
   console.log(`\nHi from cooper`)
   // const callingLocation = dirname(fromFileUrl(metaUrl))
   const callingLocation = metaUrl
-  console.log(metaUrl)
-  console.log(fromFileUrl(metaUrl))
-  console.log(callingLocation)
-  console.log(`HERE\n`)
 
   // get all files & necessary attributes
+  console.log(`file.path's`)
   for await (const file of walk(callingLocation, {
     maxDepth: 2,
     includeDirs: true,
