@@ -33,7 +33,7 @@ const cooper = async (metaUrl) => {
   const files = []
   console.log(`\nHi from cooper`)
   // const callingLocation = dirname(fromFileUrl(metaUrl))
-  const callingLocation = metaUrl
+  const callingLocation = fromFileUrl(metaUrl)
   console.log(callingLocation)
 
   // get all files & necessary attributes
