@@ -43,6 +43,7 @@ const cooper = async (metaUrl) => {
     exts: [`js`, `ts`],
   })) {
     const moduleName = determineModuleName(file.name, file.path)
+    console.log(file.path)
     files.push({
       path: file.path,
       name: file.name,
