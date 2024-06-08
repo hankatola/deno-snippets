@@ -32,6 +32,7 @@ const cooper = async (metaUrl) => {
   const exports = {}
   const files = []
   const callingLocation = dirname(fromFileUrl(metaUrl))
+  console.log(callingLocation)
 
   // get all files & necessary attributes
   for await (const file of walk(callingLocation, {
