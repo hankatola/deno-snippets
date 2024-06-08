@@ -31,11 +31,12 @@ const determineModuleName = (fileName, filePath) => {
 const cooper = async (metaUrl) => {
   const exports = {}
   const files = []
-  console.log(`\nHi from cooper\n`)
+  console.log(`\nHi from cooper`)
   let callingLocation = dirname(fromFileUrl(metaUrl))
   console.log(callingLocation)
   callingLocation.replace(`https://raw.githubusercontent.com`, ``)
   console.log(callingLocation)
+  console.log(`HERE\n`)
 
   // get all files & necessary attributes
   for await (const file of walk(callingLocation, {
