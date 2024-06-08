@@ -32,23 +32,15 @@ const cooper = async (metaUrl) => {
   const exports = {}
   const files = []
   console.log(`\nHi from cooper`)
-  // const callingLocation = dirname(fromFileUrl(metaUrl))
-  // const callingLocation = fromFileUrl(metaUrl)
-  console.log(`after not using fromFileUrl`)
-  const callingLocation = dirname(metaUrl)
-  console.log(callingLocation)
-  // console.log(`after dirname`)
-  // console.log(dirname(callingLocation))
+  const callingLocation = dirname(fromFileUrl(metaUrl))
 
   // get all files & necessary attributes
-  console.log(`file.path's`)
   for await (const file of walk(callingLocation, {
     maxDepth: 2,
     includeDirs: true,
     exts: [`js`, `ts`],
   })) {
     const moduleName = determineModuleName(file.name, file.path)
-    console.log(file.path)
     files.push({
       path: file.path,
       name: file.name,
@@ -69,7 +61,7 @@ const cooper = async (metaUrl) => {
   }
 
   // request all the modules at once && add them if not empty
-  console.log(`\ngot to here, not actually trying to import\n`)
+  console.log(`\ngot to here, now actually trying to import\n`)
   await Promise.all(
     files.map(async (file) => {
       if (file.included) {
