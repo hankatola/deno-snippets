@@ -32,7 +32,8 @@ const cooper = async (metaUrl) => {
   const exports = {}
   const files = []
   console.log(`\nHi from cooper\n`)
-  const callingLocation = dirname(fromFileUrl(metaUrl))
+  let callingLocation = dirname(fromFileUrl(metaUrl))
+  callingLocation.replace(`https://raw.githubusercontent.com`, ``)
   console.log(callingLocation)
 
   // get all files & necessary attributes
