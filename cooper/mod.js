@@ -70,6 +70,7 @@ const cooper = async (metaUrl) => {
   await Promise.all(
     files.map(async (file) => {
       if (file.included) {
+        console.log(file.path)
         const module = await import(file.path)
         if (Object.keys(module).length > 0) {
           exports[file.moduleName] = module
