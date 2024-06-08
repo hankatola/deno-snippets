@@ -32,11 +32,10 @@ const cooper = async (metaUrl) => {
   const exports = {}
   const files = []
   console.log(`\nHi from cooper`)
-  let callingLocation = dirname(fromFileUrl(metaUrl))
+  // const callingLocation = dirname(fromFileUrl(metaUrl))
+  const callingLocation = metaUrl
   console.log(metaUrl)
   console.log(fromFileUrl(metaUrl))
-  console.log(callingLocation)
-  callingLocation.replace(`https://raw.githubusercontent.com`, ``)
   console.log(callingLocation)
   console.log(`HERE\n`)
 
