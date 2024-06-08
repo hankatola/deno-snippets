@@ -31,6 +31,7 @@ const determineModuleName = (fileName, filePath) => {
 const cooper = async (metaUrl) => {
   const exports = {}
   const files = []
+  console.log(`\nHi from cooper\n`)
   const callingLocation = dirname(fromFileUrl(metaUrl))
   console.log(callingLocation)
 
