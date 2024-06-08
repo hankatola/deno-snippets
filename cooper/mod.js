@@ -28,7 +28,7 @@ const determineModuleName = (fileName, filePath) => {
   return fileName.slice(0, -3)
 }
 
-const makeExports = async (metaUrl) => {
+const cooper = async (metaUrl) => {
   const exports = {}
   const files = []
   const callingLocation = dirname(fromFileUrl(metaUrl))
@@ -73,4 +73,4 @@ const makeExports = async (metaUrl) => {
   return exports
 }
 
-export default makeExports
+export default cooper

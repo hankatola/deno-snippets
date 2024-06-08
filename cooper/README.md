@@ -7,7 +7,6 @@ cooper.js is a utility designed for the Deno runtime that automates the creation
 ## Features
 
 - **Direct Import**: Import directly from a GitHub URL without the need for local installation.
-- **Barrel File Generation**: Automatically generates `mod.js` files that serve as central export hubs for directories, consolidating exports into a single file.
 - **Collision Detection**: Includes built-in collision detection to prevent issues with duplicate module names.
 - **Dynamic Module Management**: Dynamically imports and exports modules based on their directory structure and naming conventions.
 
