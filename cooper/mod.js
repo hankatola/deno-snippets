@@ -69,10 +69,11 @@ const cooper = async (metaUrl) => {
   }
 
   // request all the modules at once && add them if not empty
+  console.log(`\ngot to here, not actually trying to import\n`)
   await Promise.all(
     files.map(async (file) => {
       if (file.included) {
-        console.log(file.path)
+        console.log(`from async function, trying to import ${file.path}`)
         const module = await import(file.path)
         if (Object.keys(module).length > 0) {
           exports[file.moduleName] = module
