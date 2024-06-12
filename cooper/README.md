@@ -6,7 +6,6 @@ cooper.js is a utility designed for the Deno runtime that automates the creation
 
 ## Features
 
-- **Direct Import**: Import directly from a GitHub URL without the need for local installation.
 - **Collision Detection**: Includes built-in collision detection to prevent issues with duplicate module names.
 - **Dynamic Module Management**: Dynamically imports and exports modules based on their directory structure and naming conventions.
 
@@ -15,7 +14,7 @@ cooper.js is a utility designed for the Deno runtime that automates the creation
 Here is a sample of a `mod.js` file using cooper to become a barrel file.
 ```javascript
 // mod.js
-import barrelMaker from "https://raw.githubusercontent.com/hankatola/deno-snippets/main/cooper/mod.js"
+import barrelMaker from "../lib/cooper.js"
 
 const barrelExports = await barrelMaker(import.meta.url)
 
